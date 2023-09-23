@@ -4,7 +4,7 @@ import allCategories from '../fake-data/all-categories';
 import ProductCard from './ProductCard';
 
 const Products = () => {
-  const [filter, setFilter] = useState(allProducts);
+  const [productsArray, setProductsArray] = useState(allProducts);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categoryKey = 'selectedCategory';
@@ -19,12 +19,16 @@ const Products = () => {
       selectedCategory === 'All'
         ? allProducts
         : allProducts.filter(
-            (product) => product.category === selectedCategory.substring(6),
+            (product) => product.category === getCategoryName(selectedCategory),
           );
-    setFilter(filterProducts);
+    setProductsArray(filterProducts);
 
     localStorage.setItem(categoryKey, selectedCategory);
   }, [selectedCategory]);
+
+  const getCategoryName = (category) => {
+    return category === 'All' ? category : category.substring(6);
+  };
 
   const handleCategory = (category) => {
     setSelectedCategory(category);
@@ -48,11 +52,11 @@ const Products = () => {
               key={category}
               onClick={() => handleCategory(category)}
             >
-              {category === 'All' ? category : category.substring(6)}
+              {getCategoryName(category)}
             </button>
           ))}
         </div>
-        {filter.map((product) => (
+        {productsArray.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
