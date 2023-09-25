@@ -67,21 +67,10 @@ const ProductCard = () => {
           <hr />
           <h4 className="text-black-50">{product.title}</h4>
           <hr />
-          <p className="lead fw-bold text-black-50">
-            Rating
-            {product.rating && product.rating.rate}
-            <i className="fa fa-star text-secondary"></i>
-          </p>
-          <hr />
+
           <h3 className="display-7 fw-bold text-black-50">${product.price}</h3>
           <hr />
           <p className="lead fw-bold text-black-50">{product.description}</p>
-          <button className="btn btn-outline-dark ms-2 px-3 py-3 ">
-            Add to Cart
-          </button>
-          <NavLink to="/cart" className="btn btn-outline-dark ms-2 px-3 py-3 ">
-            Go to Cart
-          </NavLink>
         </div>
       </>
     );
