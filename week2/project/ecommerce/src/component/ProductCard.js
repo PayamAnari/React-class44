@@ -58,8 +58,7 @@ const ProductCard = () => {
           <img
             src={product.image}
             alt={product.title}
-            height="400px"
-            width="400px"
+            className="h-400 w-400"
           />
         </div>
         <div className="col-md-6 pt-5">
