@@ -5,7 +5,7 @@ const Buttons = ({ filterProducts }) => {
     { label: 'All', category: 'All' },
     { label: "Men's Clothing", category: "men's clothing" },
     { label: "Women's Clothing", category: "women's clothing" },
-    { label: 'Jewelry', category: 'jewelery' },
+    { label: 'Jewelry', category: 'jewelry' },
     { label: 'Electronics', category: 'electronics' },
   ];
 

@@ -55,21 +55,29 @@ const ProductCard = () => {
     return (
       <>
         <div className="col-md-6 pt-5">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="h-400 w-400"
-          />
+          <img src={product.image} alt={product.title} className="img-fluid" />
         </div>
         <div className="col-md-6 pt-5">
-          <h4 className="text-uppercase text-warning">{product.category}</h4>
+          <h4 className="text-uppercase text-warning ">{product.category}</h4>
           <hr />
-          <h4 className="text-black-50">{product.title}</h4>
+          <h4 className=" text-black-50 ">{product.title}</h4>
           <hr />
-
-          <h3 className="display-7 fw-bold text-black-50">${product.price}</h3>
+          <p className="lead fw-bold text-black-50  ">
+            Rating {product.rating && product.rating.rate}
+            <i className="fa fa-star text-secondary"></i>
+          </p>
           <hr />
-          <p className="lead fw-bold text-black-50">{product.description}</p>
+          <h3 className="display-7 fw-bold text-black-50 ">
+            $ {product.price}
+          </h3>
+          <hr />
+          <p className="lead fw-bold text-black-50  ">{product.description}</p>
+          <button className="btn btn-outline-dark ms-2 px-3 py-3   ">
+            Add to Cart
+          </button>
+          <NavLink to="/cart" className="btn btn-outline-dark ms-2 px-3 py-3  ">
+            Go to Cart
+          </NavLink>
         </div>
       </>
     );
