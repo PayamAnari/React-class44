@@ -5,7 +5,7 @@ import Buttons from './Buttons';
 
 const Products = () => {
   const [data, setData] = useState([]);
-  const [filter, setFilter] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,7 +18,7 @@ const Products = () => {
         if (response.ok && componentMounted) {
           const jsonData = await response.json();
           setData(jsonData);
-          setFilter(jsonData);
+          setFilteredProducts(jsonData);
         } else {
           throw new Error(
             'Oops! Something went wrong. Please try again later.',
@@ -60,14 +60,14 @@ const Products = () => {
   const filterProducts = (cat) => {
     const updatedList =
       cat === 'All' ? data : data.filter((x) => x.category === cat);
-    setFilter(updatedList);
+    setFilteredProducts(updatedList);
   };
 
   const ShowProducts = () => {
     return (
       <>
         <Buttons filterProducts={filterProducts} />
-        {filter.map((product) => (
+        {filteredProducts.map((product) => (
           <div className="col-md-4 mb-4" key={product.id}>
             <div className="card h-100 text-center p-4">
               <img
