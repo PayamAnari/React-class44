@@ -23,10 +23,14 @@ const Products = () => {
             setFilter(jsonData);
           }
         } else {
-          throw new Error('Error fetching products');
+          throw new Error(
+            'Oops! Something went wrong. Please try again later.',
+          );
         }
       } catch (error) {
-        setError(error.message);
+        setError(
+          'Oops! Unable to fetch products. Please check your internet connection and try again.',
+        );
       } finally {
         setLoading(false);
       }
