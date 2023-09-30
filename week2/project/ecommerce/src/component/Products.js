@@ -21,13 +21,13 @@ const Products = () => {
             const jsonData = await response.clone().json();
             setData(jsonData);
             setFilter(jsonData);
-            setLoading(false);
           }
         } else {
           throw new Error('Error fetching products');
         }
       } catch (error) {
         setError(error.message);
+      } finally {
         setLoading(false);
       }
     };
