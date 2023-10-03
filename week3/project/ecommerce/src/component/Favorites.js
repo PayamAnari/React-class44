@@ -23,7 +23,6 @@ const Favorites = () => {
           }),
         );
 
-        // Filter out null values (products that couldn't be fetched)
         const filteredProducts = productData.filter(
           (product) => product !== null,
         );

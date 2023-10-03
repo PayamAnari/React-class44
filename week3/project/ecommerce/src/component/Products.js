@@ -1,4 +1,3 @@
-// Products.js
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Buttons from './Buttons';
@@ -8,11 +7,23 @@ import heartRegular from '../assets/heart-regular.svg';
 import useFetch from './useFetch';
 
 const Products = () => {
+  const { favorites, addToFavorites, removeFromFavorites } = useFavorite();
+
+  const {
+    data: productsData,
+    loading,
+    error,
+  } = useFetch('https://fakestoreapi.com/products');
+
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { favorites, addToFavorites, removeFromFavorites } = useFavorite();
+
+  useEffect(() => {
+    if (productsData) {
+      setData(productsData);
+      setFilter(productsData);
+    }
+  }, [productsData]);
 
   const toggleFavorite = (id) => {
     if (favorites.includes(id)) {
@@ -21,16 +32,6 @@ const Products = () => {
       addToFavorites(id);
     }
   };
-
-  const { data: productsData } = useFetch('https://fakestoreapi.com/products');
-
-  useEffect(() => {
-    if (productsData) {
-      setData(productsData);
-      setFilter(productsData);
-      setLoading(false);
-    }
-  }, [productsData]);
 
   const filterProducts = (category) => {
     if (category === 'All') {

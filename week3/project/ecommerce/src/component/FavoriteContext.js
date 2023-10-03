@@ -1,4 +1,3 @@
-// FavoriteContext.js
 import { createContext, useContext, useState } from 'react';
 
 const FavoriteContext = createContext();

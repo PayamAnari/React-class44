@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useFavorite } from './FavoriteContext';
 import useFetch from './useFetch';
 import heartSolid from '../assets/heart-solid.svg';
 import heartRegular from '../assets/heart-regular.svg';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ProductCard = () => {
   const { favorites, addToFavorites, removeFromFavorites } = useFavorite();
@@ -14,7 +14,6 @@ const ProductCard = () => {
     error,
   } = useFetch(`http://fakestoreapi.com/products/${id}`);
 
-  // Declare state-setting functions here
   const [isFavorite, setIsFavorite] = useState(favorites.includes(id));
 
   const toggleFavorite = () => {
