@@ -10,7 +10,6 @@ const Products = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let componentMounted = true;
 
     const getProducts = async () => {
       try {
@@ -38,7 +37,6 @@ const Products = () => {
     getProducts();
 
     return () => {
-      componentMounted = false;
     };
   }, []);
 
